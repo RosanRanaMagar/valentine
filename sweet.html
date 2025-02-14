@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            transition: background-color 3s ease;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            height: 400px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #e63946;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1s forwards;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #e63946;
+            cursor: pointer;
+            animation: heartBeat 1s infinite;
+            margin-top: 30px;
+        }
+
+        .heart:hover {
+            transform: scale(1.2);
+        }
+
+        .button {
+            background-color: #e63946;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .button:hover {
+            background-color: #d62828;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes backgroundChange {
+            0% {
+                background-color: #f1f1f1;
+            }
+            100% {
+                background-color: #f8d7da;
+            }
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 22px;
+            color: #2d6a4f;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: revealMessage 1s forwards;
+        }
+
+        @keyframes revealMessage {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Happy Valentine's Day!</h1>
+    <p id="message">You are my everything, and I want to make this day special for you.</p>
+
+    <div class="heart">❤️</div>
+    <button class="button" onclick="showMessage()">Click for Surprise</button>
+
+    <p id="hidden-message" class="hidden-message">I love you to the moon and back, forever and always! 💕</p>
+</div>
+
+<script>
+    function showMessage() {
+        // Show hidden message
+        const hiddenMessage = document.getElementById('hidden-message');
+        hiddenMessage.style.display = 'block';
+
+        // Change the background color gradually to a romantic setting
+        document.body.style.animation = 'backgroundChange 3s forwards';
+        
+        // Change the button text
+        const button = document.querySelector('.button');
+        button.innerHTML = "You're my everything!";
+        button.disabled = true;
+
+        // Optionally, you can disable the button after clicking
+        setTimeout(() => {
+            button.innerHTML = "Thank you for being mine!";
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>
